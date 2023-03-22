@@ -1,1 +1,0 @@
-# oop-school-library
