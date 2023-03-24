@@ -5,14 +5,14 @@ class Person < Nameable
   attr_accessor :name, :age
 
   def initialize(age, name = 'unknown', parent_permission: true)
+    super(name, age, parent_permission)
     @id = Random.rand(1..1000)
     @name = name
     @age = age
     @parent_permission = parent_permission
-  
   end
 
-  def correct_name 
+  def correct_name
     @name
   end
 
@@ -32,26 +32,27 @@ class Person < Nameable
 end
 
 class Decorator < Nameable
-    def initialize(nameable)
-        @nameable=nameable
-    end
+  def initialize(nameable)
+    super(name, age, parent_permission)
+    @nameable = nameable
+  end
 
-    def correct_name
-        @nameable.correct_name
-    end
+  def correct_name
+    @nameable.correct_name
+  end
 end
 
 class CapitalizeDecorator < Decorator
-    def correct_name
-     @nameable.correct_name.capitalize()
-    end
- end
- 
- class TrimmerDecorator < Decorator
-     def correct_name
-      @nameable.correct_name[0...10]
-     end
+  def correct_name
+    @nameable.correct_name.capitalize
   end
+end
+
+class TrimmerDecorator < Decorator
+  def correct_name
+    @nameable.correct_name[0...10]
+  end
+end
 
 #   person = Person.new(22, 'maximilianus')
 #   person.correct_name
