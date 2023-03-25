@@ -108,6 +108,10 @@ Clone this repository to your desired folder:
 
 - Install the dev dependencies for linters run npm install.
 
+### Deployment
+
+You can deploy this project using:run ruby main.rb in terminal
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
