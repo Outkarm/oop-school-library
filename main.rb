@@ -1,65 +1,47 @@
 require './app'
 
-class Main
-  MENU = {
-    '1' => :list_books,
-    '2' => :list_people,
-    '3' => :create_person,
-    '4' => :create_book,
-    '5' => :create_rental,
-    '6' => :list_rentals_for_person,
-    '7' => :quit
-  }.freeze
+def main
+  app = App.new
 
-  def initialize
-    @app = App.new
-  end
+  puts 'Welcome to School Library App!'
 
-  def display_menu
-    puts 'Library App Menu:'
-    MENU.each { |key, value| puts "#{key}. #{value.to_s.capitalize.gsub('_', ' ')}" }
-  end
+  options = {
+    'List all books' => :list_books,
+    'List all people' => :list_people,
+    'Create a person' => :create_person,
+    'Create a book' => :create_book,
+    'Create a rental' => :create_rental,
+    'List all rentals for a given person id' => :list_rentals_by_person_id,
+    'Exit' => :exit
+  }
 
-  def run
-    loop do
-      display_menu
-      choice = gets.chomp
-      if MENU.keys.include?(choice)
-        send(MENU[choice])
-        break if choice == '7'
-      else
-        puts 'Invalid choice! Please try again.'
-      end
+  loop_method(app, options)
+end
+
+def loop_method(app, options)
+  loop do
+    option = get_menu_option(options)
+    method = options[option]
+    if method == :exit
+      puts 'Thank you for using this app!'
+      break
+    else
+      app.send(method)
     end
-  end
-
-  def list_books
-    @app.list_books
-  end
-
-  def list_people
-    @app.list_people
-  end
-
-  def create_person
-    @app.create_person
-  end
-
-  def create_book
-    @app.create_book
-  end
-
-  def create_rental
-    @app.create_rental
-  end
-
-  def list_rentals_for_person
-    @app.list_rentals_for_person
-  end
-
-  def quit
-    puts 'Thank you for using the Library App. Goodbye!'
   end
 end
 
-Main.new.run
+def get_menu_option(options)
+  puts 'Please choose an option by entering a number:'
+  options.each_with_index { |(option, _), index| puts "#{index + 1}. #{option}" }
+
+  option = gets.chomp.to_i
+  option -= 1
+  if option >= 0 && option < options.size
+    options.keys[option]
+  else
+    puts 'That is not a valid option'
+    get_menu_option(options)
+  end
+end
+main
