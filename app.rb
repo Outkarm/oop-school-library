@@ -61,9 +61,9 @@ class App
 
     print 'Has parent permission? [y/n]: '
     parent_permission = gets.chomp
-    if parent_permission == 'y' || parent_permission.downcase == 'y'
+    if parent_permission == 'y'
       parent_permission = true
-    elsif parent_permission == 'n' || parent_permission.downcase == 'n'
+    elsif parent_permission == 'n'
       parent_permission = false
     else
       return nil
