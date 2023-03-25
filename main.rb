@@ -40,7 +40,7 @@ def get_menu_option(options)
   if option >= 0 && option < options.size
     options.keys[option]
   else
-    puts 'That is not a valid option'
+    puts 'That option is in valid'
     get_menu_option(options)
   end
 end
