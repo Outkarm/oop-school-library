@@ -108,6 +108,22 @@ Clone this repository to your desired folder:
 
 - Install the dev dependencies for linters run npm install.
 
+### Install
+
+Install this project with:run in terminal git clone git@github.com:Outkarm/oop-school-library.git
+
+### Usage
+
+To run the project, execute the following command: ruby main.rb
+
+### Run tests
+
+To run tests, run the following command:ruby main.rb
+
+### Deployment
+
+You can deploy this project using:run ruby main.rb in terminal
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
